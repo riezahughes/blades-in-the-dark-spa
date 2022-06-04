@@ -1,18 +1,21 @@
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { render, within, screen } from "@testing-library/react";
 import PieCounter from "./PieCounter";
 
 describe("PieCounter component testing", () => {
   it("Can display all defaults if nothing is added", async () => {
-    render(<PieCounter sections={null} title={null} description={null} />);
+    render(<PieCounter />);
 
-    expect(screen.getAllByTestId("test-pie-counter")).toContain("4");
-    expect(screen.getAllByTestId("test-pie-counter")).toContain(
-      "Give me a title"
-    );
-    expect(screen.getAllByTestId("test-pie-counter")).toContain(
-      "Insert a small description so you can explain what this counter is for"
-    );
+    const { getByText } = within(screen.getByTestId("test-pie-counter"));
+
+    expect(await getByText("Sections: 4")).toBeInTheDocument();
+    expect(await getByText("Title: Give me a title")).toBeInTheDocument();
+    expect(
+      await getByText(
+        "Description: Insert a small description so you can explain what this counter is for"
+      )
+    ).toBeInTheDocument();
   });
+
   it("Can display custom settings", () => {
     render(
       <PieCounter
@@ -22,10 +25,12 @@ describe("PieCounter component testing", () => {
       />
     );
 
-    expect(screen.getAllByTestId("test-pie-counter")).toContain("2");
-    expect(screen.getAllByTestId("test-pie-counter")).toContain("Days Left");
-    expect(screen.getAllByTestId("test-pie-counter")).toContain(
-      "The number of days left till you are attacked"
-    );
+    const { getByText } = within(screen.getByTestId("test-pie-counter"));
+
+    expect(getByText("Sections: 2")).toBeInTheDocument();
+    expect(getByText("Title: Days Left")).toBeInTheDocument();
+    expect(
+      getByText("Description: The number of days left till you are attacked")
+    ).toBeInTheDocument();
   });
 });

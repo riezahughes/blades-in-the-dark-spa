@@ -8,8 +8,8 @@ const PieCounter = ({
   return (
     <section data-testid="test-pie-counter">
       <p>Sections: {sections}</p>
-      <p>title: {title}</p>
-      <p>description: {description}</p>
+      <p>Title: {title}</p>
+      <p>Description: {description}</p>
     </section>
   );
 };
