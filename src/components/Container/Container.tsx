@@ -8,8 +8,8 @@ const Container = () => {
   return (
     <>
       <PieCounter sections={4} />
-      <PieCounter sections={8} />
-      <PieCounter sections={8} />
+      {/* <PieCounter colour="green" sections={8} /> */}
+      {/* <PieCounter colour="#c51818" sections={8} /> */}
     </>
   );
 };

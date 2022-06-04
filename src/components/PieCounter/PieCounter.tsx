@@ -3,23 +3,23 @@ import styled from "@emotion/styled";
 
 import { PieSegment } from "../";
 
+import imgUrl from "../../static/default_pie_bkg.jpg";
+
 const Div = styled.div`
-  background-color: black;
+  background-image: url(${imgUrl});
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 5px solid #383838;
+  border: 2px solid white;
   overflow: hidden;
   position: relative;
-  &.div: {
-    background-color: red;
-  }
 `;
 
 const PieCounter = ({
   sections = 4,
   title = "Give me a title",
   description = "Insert a small description so you can explain what this counter is for",
+  colour = "#2003bd",
 }: IPieCounter) => {
   const sectionArray = Array.from(Array(sections).keys());
 
@@ -38,6 +38,7 @@ const PieCounter = ({
           rotateCount = rotateCount + 360 / sections;
           return (
             <PieSegment
+              colour={colour}
               key={`pie-${index}`}
               rotateBy={rotateCount}
               totalSegments={sections}
