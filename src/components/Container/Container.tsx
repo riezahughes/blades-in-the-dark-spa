@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 
+import { PieCounter } from "../";
+
 const Div = styled.div``;
 
 const Container = () => {
-  return <h1>Container</h1>;
+  return <PieCounter />;
 };
 
 export default Container;
