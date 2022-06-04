@@ -5,13 +5,16 @@ import { useState } from "react";
 const PieSegment = ({
   colour = "blue",
   status = false,
-  rotate = 90,
+  rotateBy = 90,
+  totalSegments,
 }: IPieSegment) => {
   const [stateStatus, setStateStatus] = useState(status);
 
   const toggleStateStatus = () => {
     setStateStatus(!stateStatus);
   };
+
+  const skew = totalSegments == 4 ? 0 : 360 / totalSegments;
 
   const Div = styled.div`
     background-color: ${colour};
@@ -20,18 +23,18 @@ const PieSegment = ({
     width: 120px;
     overflow: hidden;
     transform-origin: 0% 100%;
-    transform: rotate(${rotate}deg) skew(-0deg);
+    transform: rotate(${rotateBy}deg) skew(-${skew}deg);
     position: absolute;
     left: 50%;
     top: -50%;
-    cursor: pointer
     &:before {
       transform-origin: 0% 100%;
-      transform: rotate(${rotate}deg) skew(0deg);
+      transform: rotate(${rotateBy}deg) skew(${skew}deg);
     }
     &:hover {
       background-color: yellow;
       opacity: 1;
+      cursor: pointer;
     }
   `;
 

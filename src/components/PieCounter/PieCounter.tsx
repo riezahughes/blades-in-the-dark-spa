@@ -35,8 +35,14 @@ const PieCounter = ({
 
       <Div>
         {sectionArray.map((segment, index) => {
-          rotateCount = rotateCount + 90;
-          return <PieSegment key={`pie-${index}`} rotate={rotateCount} />;
+          rotateCount = rotateCount + 360 / sections;
+          return (
+            <PieSegment
+              key={`pie-${index}`}
+              rotateBy={rotateCount}
+              totalSegments={sections}
+            />
+          );
         })}
       </Div>
     </>

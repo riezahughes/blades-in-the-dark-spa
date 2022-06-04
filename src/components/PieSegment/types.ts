@@ -1,5 +1,6 @@
 export interface IPieSegment {
   colour?: string;
   status?: boolean;
-  rotate: number;
+  rotateBy: number;
+  totalSegments: number;
 }

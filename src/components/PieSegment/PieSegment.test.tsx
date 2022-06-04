@@ -4,7 +4,7 @@ import PieSegment from "./PieSegment";
 describe("PieSegment component testing", () => {
   it("Can display all defaults if nothing is added", async () => {
     // expect colour to be blue and for opacity to be set
-    render(<PieSegment rotate={90} />);
+    render(<PieSegment rotateBy={90} totalSegments={4} />);
 
     expect(screen.getByTestId("test-pie-segment")).toHaveStyle(`opacity: 0.5`);
     expect(screen.getByTestId("test-pie-segment")).toHaveStyle(
@@ -14,7 +14,14 @@ describe("PieSegment component testing", () => {
   });
 
   it("Can display custom settings", () => {
-    render(<PieSegment colour="green" status={true} rotate={90} />);
+    render(
+      <PieSegment
+        colour="green"
+        status={true}
+        rotateBy={90}
+        totalSegments={4}
+      />
+    );
 
     expect(screen.getByTestId("test-pie-segment")).toHaveStyle(`opacity: 1`);
     expect(screen.getByTestId("test-pie-segment")).toHaveStyle(
