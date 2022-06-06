@@ -1,7 +1,7 @@
 import { IPieCounter } from "./types";
 import styled from "@emotion/styled";
 
-import { PieSegment } from "../";
+import { PieSegment, PieSelection } from "../";
 
 import imgUrl from "../../static/default_pie_bkg.jpg";
 
@@ -34,6 +34,7 @@ const PieCounter = ({
       </section>
 
       <Div>
+        <PieSelection totalSegments={sections} rotateBy={10} />
         {sectionArray.map((segment, index) => {
           rotateCount = rotateCount + 360 / sections;
           return (
